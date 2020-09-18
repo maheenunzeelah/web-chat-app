@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom'
 const InfoBar=({room})=>(
     
       <div className="row" style={{backgroundColor:'#33b5e5', marginTop:'120px'}}>
@@ -10,7 +10,7 @@ const InfoBar=({room})=>(
        {room}
       </div>
       <div className="col-md-1">
-      <i className="fa fa-times"></i>
+       <a href="/" style={{textDecoration:"none"}}> <i className="fa fa-times"></i></a>
       </div>
       </div>
     

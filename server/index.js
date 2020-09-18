@@ -21,9 +21,22 @@ io.on('connection',(socket)=>{
       // if error that means user already exists in that room
       if(error) return callback(error) 
       
+      //emitting message event from backend to the front end
+      socket.emit('message',{user:'admin',text:`${user.name} has joined room ${user.room}`})
+
+      //will tell everyone accept the user that has joined about his joining
+      socket.broadcast.to(user.room).emit('message',{user:'admin', text:`${user.name} has joined`})
       socket.join(user.room)
+      callback()
     })
 
+    socket.on('sendMessage',(message,callback)=>{
+        const user=getUser(socket.id)
+        console.log(user)
+        if(!user) return 
+        io.to(user.room).emit('message',{user:user.name, text:message})
+        callback();
+    })
     //when user disconnects
     socket.on('disconnect',()=>{
         console.log('User has left')

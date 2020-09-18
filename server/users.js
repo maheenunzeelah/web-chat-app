@@ -7,7 +7,7 @@ const addUsers = ({ id, name, room }) => {
 
     //if same user tries to join the same room
     const isExisting = users.find(user => user.name === name && user.room === room)
-    console.log(isExisting)
+    
 
     if (isExisting)
         return { error: 'User already exists' }
@@ -25,7 +25,10 @@ const removeUser = (id) => {
           users.splice(index,1)[0]
       }
 }
-const getUser = (id) => users.find(user=>user.id===id)
+const getUser = (id) => {
+    console.log(users)
+   return  users.find(user=>user.id===id)
+}
 
 const getUserInRoom = (room) => users.filter(user=>user.room===room)
 

@@ -4,7 +4,8 @@ const Join = () => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
     return (
-        <div className="container" style={{ width: '40%', marginTop: '150px' }}>
+        <div className="container p-3 rounded-sm" style={{ width: '40%', marginTop: '150px' ,backgroundColor:'white',color:'#4285F4'}}>
+        <center><h3 className="font-weight-bold mb-4">Join</h3></center>
             <form>
                 <div class="form-group">
                     <label for="exampleInputText1">Name</label>

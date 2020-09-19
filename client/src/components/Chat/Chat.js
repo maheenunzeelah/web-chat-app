@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import querystring from 'querystring';
 import io from 'socket.io-client';
 import InfoBar from '../InfoBar/InfoBar';
-import Input from '../Input/Input'
+import Input from '../Input/Input';
+import Messages from '../Messages/Messages';
+import TextContainer from '../TextContainer/TextContainer'
+
 let socket;
 const Chat = ({ location }) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
+    const [users,setUsers]=useState('')
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
 
@@ -41,6 +45,9 @@ const Chat = ({ location }) => {
       socket.on('message',(message)=>{
        setMessages([...messages,message])
       })
+    //   socket.on("roomData", ({ users }) => {
+    //     setUsers(users);
+    //   });
     },[messages])
 
     console.log("message  "+message)
@@ -49,8 +56,9 @@ const Chat = ({ location }) => {
         <div className="container" style={{backgroundColor:'white' , height:'400px', width:'45%'}} >
 
         <InfoBar room={room} />
-        
+        <Messages messages={messages} name={name} />
         <Input message={message} sendMessage={sendMessage} setMessage={setMessage}/>
+        {/* <TextContainer users={users}/> */}
         </div>
     )
 }

@@ -27,19 +27,31 @@ io.on('connection',(socket)=>{
       //will tell everyone accept the user that has joined about his joining
       socket.broadcast.to(user.room).emit('message',{user:'admin', text:`${user.name} has joined`})
       socket.join(user.room)
+
+      //Data of users in that room
+      io.to(user.room).emit('roomData',{room:user.room, users:getUserInRoom(user.room)})
+
       callback()
     })
 
     socket.on('sendMessage',(message,callback)=>{
+        //waiting for message from client side
         const user=getUser(socket.id)
         console.log(user)
         if(!user) return 
         io.to(user.room).emit('message',{user:user.name, text:message})
+
+        io.to(user.room).emit('roomData',{room:user.room, users:getUserInRoom(user.room)})
         callback();
     })
     //when user disconnects
     socket.on('disconnect',()=>{
-        console.log('User has left')
+        //Remove user from room
+       const user=removeUser(socket.id);
+       if(user){
+           // inform users in that room about the user that left
+           io.to(user.room).emit('message',{user:'admin',text:`${user.name} has left the room`})
+       }
     })
 })
 app.use(router)

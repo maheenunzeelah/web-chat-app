@@ -10,19 +10,19 @@ const Message=({message:{user,text},name})=>{
       isSentByCurrentUser
       ?(
           <div>
-          <div style={{left:'65%', position:'relative',backgroundColor:'blue', padding:'5px',width:'30%', marginTop:'5px'}}>
+          <div style={{left:'65%', position:'relative', height:'30px', backgroundColor:'blue', padding:'8px',width:'30%', marginTop:'30px'}}>
 
           <div style={{color:'white'}}>{text}
          
           </div>  
           <br />   
           </div>
-          <p>{trimmedName}</p>
+          <p className="float-right" style={{textAlign:'right'}}>{trimmedName}</p>
           </div>
       ):
       (
           <div>
-          <div style={{left:'5% ', position:'relative',backgroundColor:'gray' ,padding:'5px',width:'30%' ,marginTop:'5px'}}>
+          <div style={{left:'5% ', position:'relative',backgroundColor:'gray' ,padding:'8px',width:'30%' ,marginTop:'6px'}}>
           
 
           <div style={{color:'white'}}>{text}

@@ -2,9 +2,9 @@ import React from 'react';
 
 const Input = ({ sendMessage, setMessage, message }) => (
 
-    <form style={{ marginTop: '343px' ,position:'fixed',top:'20%'}} >
+    <form style={{ position:'fixed', bottom:'140px'}} >
         <input type="text" value={message}
-            style={{ width: '80%', marginRight: '50px' }}
+            style={{ marginRight: '50px' ,width:'400px'}}
             placeholder="Type a message" 
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' ? sendMessage(e) : null} />

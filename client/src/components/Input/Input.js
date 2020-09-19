@@ -2,7 +2,7 @@ import React from 'react';
 
 const Input = ({ sendMessage, setMessage, message }) => (
 
-    <form style={{ position:'fixed', bottom:'140px'}} >
+    <form  className="d-flex">
         <input type="text" value={message}
             style={{ marginRight: '50px' ,width:'400px'}}
             placeholder="Type a message" 

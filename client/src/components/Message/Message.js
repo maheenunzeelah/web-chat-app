@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ReactEmoji from 'react-emoji';
 const Message=({message:{user,text},name})=>{
   let trimmedName=name.trim().toLowerCase();
   let isSentByCurrentUser;
@@ -9,15 +9,15 @@ const Message=({message:{user,text},name})=>{
   return(
       isSentByCurrentUser
       ?(
-          <div>
-          <div style={{left:'65%', position:'relative', height:'30px', backgroundColor:'blue', padding:'8px',width:'30%', marginTop:'30px'}}>
+          <div style={{marginBottom:'6%'}}>
+          <div style={{left:'65%', position:'relative',height:'40px', backgroundColor:'blue', padding:'8px',width:'30%'}}>
 
-          <div style={{color:'white'}}>{text}
-         
+          <div  style={{color:'white' }}>
+          {ReactEmoji.emojify(text)}
           </div>  
           <br />   
           </div>
-          <p className="float-right" style={{textAlign:'right'}}>{trimmedName}</p>
+          <p className="float-right " >{trimmedName}</p>
           </div>
       ):
       (
@@ -25,8 +25,8 @@ const Message=({message:{user,text},name})=>{
           <div style={{left:'5% ', position:'relative',backgroundColor:'gray' ,padding:'8px',width:'30%' ,marginTop:'6px'}}>
           
 
-          <div style={{color:'white'}}>{text}
-         
+          <div style={{color:'white'}}>
+           {ReactEmoji.emojify(text)}
           </div>
         
           </div>

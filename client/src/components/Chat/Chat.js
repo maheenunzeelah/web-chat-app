@@ -53,12 +53,20 @@ const Chat = ({ location }) => {
     console.log("message  "+message)
     console.log(messages)
     return (
-        <div className="container" style={{backgroundColor:'white' , height:'400px', width:'45%'}} >
-
+        <div className="d-flex flex-column container mt-5 bg-white" style={{height:"520px", width:'500px',  overflow:'auto'}}>
+    
+        
+        <div>
         <InfoBar room={room} />
+        </div>
+        <div className="mt-3">
         <Messages messages={messages} name={name} />
+        </div>
+        <div className="mt-auto">
         <Input message={message} sendMessage={sendMessage} setMessage={setMessage}/>
         {/* <TextContainer users={users}/> */}
+        </div>
+
         </div>
     )
 }

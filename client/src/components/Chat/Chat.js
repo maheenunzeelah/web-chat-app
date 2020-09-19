@@ -4,7 +4,8 @@ import io from 'socket.io-client';
 import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
 import Messages from '../Messages/Messages';
-import TextContainer from '../TextContainer/TextContainer'
+import TextContainer from '../TextContainer/TextContainer';
+import './Chat.css';
 
 let socket;
 const Chat = ({ location }) => {
@@ -14,7 +15,7 @@ const Chat = ({ location }) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
 
-    const endpoint = 'localhost:5000';
+    const endpoint = 'https://vast-citadel-30861.herokuapp.com/';
     useEffect(() => {
         // getting query param and parsing them in object
         const { name, room } = querystring.parse(location.search.substring(1));
@@ -53,10 +54,10 @@ const Chat = ({ location }) => {
     console.log("message  "+message)
     console.log(messages)
     return (
-        <div className="d-flex flex-column container mt-5 bg-white" style={{height:"520px", width:'500px',  overflow:'auto'}}>
+        <div className="d-flex flex-column container chat mt-5 bg-white" style={{height:"520px", width:'500px'}}>
     
         
-        <div>
+        <div >
         <InfoBar room={room} />
         </div>
         <div className="mt-3">

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactEmoji from 'react-emoji';
+import './Message.css'
 const Message=({message:{user,text},name})=>{
   let trimmedName=name.trim().toLowerCase();
   let isSentByCurrentUser;
@@ -9,32 +10,21 @@ const Message=({message:{user,text},name})=>{
   return(
       isSentByCurrentUser
       ?(
-          <div style={{marginBottom:'6%'}}>
-          <div style={{left:'65%', position:'relative',height:'40px', backgroundColor:'blue', padding:'8px',width:'30%'}}>
-
-          <div  style={{color:'white' }}>
-          {ReactEmoji.emojify(text)}
-          </div>  
-          <br />   
+        <div className="messageContainer justifyEnd">
+          <p className="sentText pr-10">{trimmedName}</p>
+          <div className="messageBox backgroundBlue">
+            <p className="messageText colorWhite">{ReactEmoji.emojify(text)}</p>
           </div>
-          <p className="float-right " >{trimmedName}</p>
+        </div>
+        )
+        : (
+          <div className="messageContainer justifyStart">
+            <div className="messageBox backgroundLight">
+              <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
+            </div>
+            <p className="sentText pl-10 ">{user}</p>
           </div>
-      ):
-      (
-          <div>
-          <div style={{left:'5% ', position:'relative',backgroundColor:'gray' ,padding:'8px',width:'30%' ,marginTop:'6px'}}>
-          
-
-          <div style={{color:'white'}}>
-           {ReactEmoji.emojify(text)}
-          </div>
-        
-          </div>
-          <p >{user}</p>
-          </div>
-          
-      )
-
+        )
   )
 
 }

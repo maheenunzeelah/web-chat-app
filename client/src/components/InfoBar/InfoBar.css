@@ -1,0 +1,39 @@
+
+a:hover{
+    font-size: 20px;
+    color:rgb(150, 16, 16)
+}
+a{
+    color:black
+}
+.infoBar {
+   
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    padding: 3px;
+    background-color: #33b5e5;
+    border-radius: 5px
+
+  }
+  
+  .leftInnerContainer {
+    flex: 0.5;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+    color: white;
+    
+  }
+  .heading{
+      margin-left: 10px
+  }
+  
+  .rightInnerContainer {
+    display: flex;
+    flex: 0.5;
+    justify-content: flex-end;
+    margin-right: 5%;
+  }
+  
